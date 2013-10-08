@@ -1,3 +1,6 @@
 This WebApp is being built on Web2py.
 
 The basic idea of this app is that given a search query(eg. Barrack Obama) and a corresponding facebook page(eg. Barrack Obama Fan Club), my app would send invites to like the page(in terms of wall posts) to people who at some point have shown interest in the search query through Facebook status updates. The project is currently ongoing and the server side code has been completed, with the UI part remaining.
+
+Features to be Added in Version 2.0:
+1) Search algorithm based on the research paper Weighted Set-Based String Similarity ftp://ftp.research.microsoft.com/pub/debull/A10mar/divesh-paper.pdf
