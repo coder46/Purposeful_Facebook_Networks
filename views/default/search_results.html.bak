@@ -1,0 +1,4 @@
+{{extend 'layout.html'}}
+Searched for Topic {{=topic}}<br>
+{{=len(users)}} Users found
+{{=form}}

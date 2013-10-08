@@ -1,0 +1,97 @@
+timestamp: 2013-10-03T12:31:55.839892
+CREATE TABLE auth_user(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    first_name CHAR(128),
+    last_name CHAR(128),
+    email CHAR(512),
+    password CHAR(512),
+    registration_key CHAR(512),
+    reset_password_key CHAR(512),
+    registration_id CHAR(512)
+);
+success!
+timestamp: 2013-10-03T12:31:55.984237
+CREATE TABLE auth_group(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    role CHAR(512),
+    description TEXT
+);
+success!
+timestamp: 2013-10-03T12:31:56.096083
+CREATE TABLE auth_membership(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE,
+    group_id INTEGER REFERENCES auth_group (id) ON DELETE CASCADE
+);
+success!
+timestamp: 2013-10-03T12:31:56.242418
+CREATE TABLE auth_permission(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    group_id INTEGER REFERENCES auth_group (id) ON DELETE CASCADE,
+    name CHAR(512),
+    table_name CHAR(512),
+    record_id INTEGER
+);
+success!
+timestamp: 2013-10-03T12:31:56.409961
+CREATE TABLE auth_event(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    time_stamp TIMESTAMP,
+    client_ip CHAR(512),
+    user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE,
+    origin CHAR(512),
+    description TEXT
+);
+success!
+timestamp: 2013-10-03T12:31:56.567162
+CREATE TABLE auth_cas(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE,
+    created_on TIMESTAMP,
+    service CHAR(512),
+    ticket CHAR(512),
+    renew CHAR(1)
+);
+success!
+timestamp: 2013-10-03T12:31:56.702998
+CREATE TABLE Users(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    Name CHAR(512),
+    access_token CHAR(512)
+);
+success!
+timestamp: 2013-10-03T12:34:01.488586
+CREATE TABLE Posts(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    post CHAR(512)
+);
+success!
+timestamp: 2013-10-03T12:34:01.644382
+CREATE TABLE User_Posts(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES Users (id) ON DELETE CASCADE,
+    post_id INTEGER REFERENCES Posts (id) ON DELETE CASCADE
+);
+success!
+timestamp: 2013-10-03T12:38:25.296625
+ALTER TABLE Posts ADD posts CHAR(512);
+timestamp: 2013-10-04T11:21:32.202258
+ALTER TABLE Users ADD user_id CHAR(512);
+timestamp: 2013-10-07T10:27:14.017012
+CREATE TABLE FBPages(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    page_id CHAR(512),
+    access_token CHAR(512)
+);
+success!
+timestamp: 2013-10-07T10:27:14.172533
+CREATE TABLE Has_page(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    UserDBid INTEGER REFERENCES Users (id) ON DELETE CASCADE,
+    PageDBid INTEGER REFERENCES FBPages (id) ON DELETE CASCADE
+);
+success!
+timestamp: 2013-10-07T10:40:28.289387
+ALTER TABLE FBPages ADD page_name CHAR(512);
+timestamp: 2013-10-07T10:40:28.467021
+ALTER TABLE FBPages ADD page_token CHAR(512);

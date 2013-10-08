@@ -1,0 +1,23 @@
+{{left_sidebar_enabled,right_sidebar_enabled=False,('message' in globals())}}
+{{extend 'layout.html'}}
+<script>var name=document.URL;</script>
+{{session.URL2="Faisal"}}
+<!--<script> ajax('echo', ['name'], 'target')</script>-->
+<script>$().load('127.0.0.1:8000/Purposeful_Facebook_Networks/default/echo',{URL:name})</script>
+<script> 
+	var n=name.split("#");
+    if(n[1])
+    	window.location = n[0]+"?"+n[1];</script>
+
+<div id="target"></div>
+<script></script>
+
+{{STR=request["get_vars"]["access_token"]}}
+{{STR=dir(request)}}
+{{STR=request.items()}}
+{{STR=str(request.env.query_string)}}
+{{=STR}}
+
+
+{{import urllib2}}
+{{url=urllib2.urlopen('https://www.facebook.com/dialog/oauth?client_id=674585182560146&redirect_uri=http://127.0.0.1:8000/Purposeful_Facebook_Networks/default/index&response_type=token&scope=publish_actions')}}
